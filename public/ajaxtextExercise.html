@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div>
+        <h2>我是ajax练习文件</h2>
+    </div>
+    <div>
+        <input id="int">
+        <button id="btn">确定</button>
+    </div>
+
+    <script>
+        var int = document.getElementById("int");
+        var btn = document.getElementById("btn");
+        btn.onclick = function () {
+            var xhr = new XMLHttpRequest();
+            //上传post请求参数
+            // var parameter = `value=${int.value}&age=${int.value}`;
+            var parameter = { name: int.value, age: int.value }
+            xhr.open("post", "http://localhost:3000/first");
+            xhr.setRequestHeader("Content-Type", "application/json")
+            xhr.send(JSON.stringify(parameter));
+            xhr.onload = function () {
+                console.log(xhr.responseText);
+            }
+        }
+    </script>
+</body>
+
+</html>
